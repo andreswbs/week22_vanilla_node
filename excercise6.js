@@ -5,12 +5,10 @@ async function writeToFile(filename, data) {
     await fs.writeFile(filename, data)
 }
 
-
-
-async function getGooglePage() {
-    const res = await axios.get('https://google.com')
-    //console.log(res.data)
-    writeToFile('google1.html', res.data)
+async function getPage(url, filename) {
+    let res = await axios.get(url)
+    writeToFile(filename, res.data)
 }
 
-getGooglePage()
+getPage('http://google.com', 'google3.html')
+getPage('http://yahoo.com', 'yahoo.html')
